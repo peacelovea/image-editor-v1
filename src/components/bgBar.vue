@@ -10,7 +10,19 @@
       </FormItem>
     </Form>
     <Divider orientation="left" plain>配色</Divider>
-
+    <div class="color-list">
+      <template v-for="(item,i) in colorList">
+        <div :key="i" class="item">
+          {{ item.label }}
+          <span
+            v-for="color in item.color"
+            :key="color"
+            :style="`background:${color}`"
+            @click="setColor(color)"
+          ></span>
+        </div>
+      </template>
+    </div>
     <Divider orientation="left" plain>背景纹理</Divider>
   </div>
 </template>
