@@ -7,7 +7,7 @@
   <div>
     <Divider plain orientation="left">卡通</Divider>
     <div class="box">
-      <img :src="`./svg/${item}.svg`" alt="" :key="item" v-for="(item) in getIndex(460, 489)" @click="addItem">
+      <img :src="`./svg/${item}.svg`" alt="" :key="item" v-for="(item) in getIndex(400, 429)" @click="addItem">
     </div>
   </div>
 </template>
