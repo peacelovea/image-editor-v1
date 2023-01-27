@@ -24,10 +24,27 @@
       </template>
     </div>
     <Divider orientation="left" plain>背景纹理</Divider>
+
+
+    <Modal
+      v-model="showModal"
+      title="请选择背景图片"
+      @on-ok="insertImgFile"
+      @on-cancel="showModal = false">
+      <Upload
+        :before-upload="handleUpload"
+        :show-upload-list="true"
+        action="#"
+      >
+        <Button icon="ios-cloud-upload-outline">选择图片文件</Button>
+      </Upload>
+    </Modal>
   </div>
 </template>
 
 <script>
+import { getImgStr } from '@/utils/utils'
+
 export default {
   name: 'bgBar',
   inject: ['canvas', 'fabric'],
@@ -66,7 +83,6 @@ export default {
   },
   methods: {
     setThisColor () {
-
       this.setColor(this.color)
     },
     // 背景颜色设置
@@ -78,6 +94,44 @@ export default {
     // 设置背景图片
     setBgImg (target) {
       console.log(target)
+      const imgEl = target.cloneNode(true)
+      imgEl.onload = () => {
+        // 可跨域
+        const imgInstance = new this.fabric.Image(imgEl, { crossOrigin: 'anonymous' })
+        // 渲染背景
+        this.canvas.c.setBackgroundImage(imgInstance, this.canvas.c.renderAll.bind(this.canvas.c), {
+          // 图片要拉伸的宽/高度 使图片充满全屏
+          scaleX: this.canvas.c.width / imgInstance.width,
+          scaleY: this.canvas.c.width / imgInstance.width,
+        })
+
+        this.canvas.c.renderAll()
+        this.canvas.c.requestRenderAll()
+      }
+    },
+    insert () {
+      this.imgFile = ''
+      this.showModal = true
+    },
+    // 上传文件
+    handleUpload (file) {
+      getImgStr(file).then(res => {
+        this.imgFile = res
+      })
+    },
+    // 确认插入
+    insertImgFile () {
+      if (this.imgFile === '') {
+        return this.$Message.error('请选择图片文件')
+      }
+      const imgEle = document.createElement('img')
+      imgEle.src = this.imgFile
+      // 插入页面
+      document.body.appendChild(imgEle)
+      imgEle.onload = () => {
+        this.setBgImg(imgEle)
+        imgEle.remove()
+      }
     }
   }
 }

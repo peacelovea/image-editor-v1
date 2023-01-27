@@ -19,3 +19,22 @@ export const downFontByJSON = (str) => {
   })
   return Promise.all(fontFamilyAll)
 }
+
+/**
+ * @description: 图片文件转字符串
+ * @param {Blob|File} file 文件
+ * @return {String}
+ */
+export function getImgStr (file) {
+  return new Promise((resolve, reject) => {
+    try {
+      const reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onload = () => {
+        resolve(reader.result)
+      }
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
