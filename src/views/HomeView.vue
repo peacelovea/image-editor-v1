@@ -6,9 +6,9 @@
         <!-- 导入 -->
         <!--        <import-JSON></import-JSON>-->
         <!--        &nbsp;-->
-        <!--        <import-svg></import-svg>-->
-        <!--        &nbsp;-->
-                <import-img></import-img>
+        <import-svg></import-svg>
+        &nbsp;
+        <import-img></import-img>
         <!--        &nbsp;-->
         <!--        &lt;!&ndash; 对齐方式 &ndash;&gt;-->
         <!--        <align></align>-->
@@ -86,7 +86,7 @@
 
 // 导入元素
 // import importJSON from '@/components/importJSON.vue'
-// import importSvg from '@/components/importSvg.vue'
+import importSvg from '@/components/importSvg.vue'
 import importImg from '@/components/importImg.vue'
 
 // // 顶部组件
@@ -140,7 +140,8 @@ export default {
     svgEl,
     history,
     bgBar,
-    importImg
+    importImg,
+    importSvg
   },
   created () {
     this.$Spin.show()
