@@ -2,4 +2,21 @@
 // 如子组件需要对fabric对象进行操作，则可以通过inject获得原始对象。
 export default {
   inject: ['canvas', 'fabric', 'event'],
+  data () {
+    return {
+      mSelectMode: '', // one | multiple
+      mSelectOneType: '', // i-text | group ...
+      mSelectId: '', // 选择id
+      mSelectIds: [], // 选择id
+    }
+  },
+  created () {
+    this.event.on('selectOne', (e) => {
+      console.log(e, 'e')
+      this.mSelectOneType = 'one'
+      this.mSelectId = e[0].id
+      this.mSelectOneType = e[0].type
+      this.mSelectIds = e.map(item => item.id)
+    })
+  }
 }
