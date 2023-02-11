@@ -3,18 +3,16 @@
     <Layout>
       <Header v-if="show">
         <!-- 导入 -->
-        <!--        <import-JSON></import-JSON>-->
-        <!--        &nbsp;-->
         <import-svg></import-svg>
-        &nbsp;
+        &nbsp;&nbsp;
         <import-img></import-img>
         &nbsp;
         <!-- 对齐方式 -->
         <align></align>
-        <!--        &nbsp;-->
-        <!--        <flip></flip>-->
-        <!--        &nbsp;-->
-        <!--        <center-align></center-align>-->
+        &nbsp;
+        <flip></flip>
+        &nbsp;
+        <!--                <center-align></center-align>-->
         <!--        &nbsp;-->
         <!--        <group></group>-->
         <!--        &nbsp;-->
@@ -91,7 +89,7 @@ import importImg from '@/components/importImg.vue'
 // // 顶部组件
 import align from '@/components/align.vue'
 // import centerAlign from '@/components/centerAlign.vue'
-// import flip from '@/components/flip.vue'
+import flip from '@/components/flip.vue'
 // import save from '@/components/save.vue'
 // import clone from '@/components/clone.vue'
 // import group from '@/components/group.vue'
@@ -141,7 +139,8 @@ export default {
     bgBar,
     importImg,
     importSvg,
-    align
+    align,
+    flip
   },
   created () {
     this.$Spin.show()
