@@ -1,4 +1,3 @@
-
 <template>
   <div class="home">
     <Layout>
@@ -9,9 +8,9 @@
         <import-svg></import-svg>
         &nbsp;
         <import-img></import-img>
-        <!--        &nbsp;-->
-        <!--        &lt;!&ndash; 对齐方式 &ndash;&gt;-->
-        <!--        <align></align>-->
+        &nbsp;
+        <!-- 对齐方式 -->
+        <align></align>
         <!--        &nbsp;-->
         <!--        <flip></flip>-->
         <!--        &nbsp;-->
@@ -90,7 +89,7 @@ import importSvg from '@/components/importSvg.vue'
 import importImg from '@/components/importImg.vue'
 
 // // 顶部组件
-// import align from '@/components/align.vue'
+import align from '@/components/align.vue'
 // import centerAlign from '@/components/centerAlign.vue'
 // import flip from '@/components/flip.vue'
 // import save from '@/components/save.vue'
@@ -141,7 +140,8 @@ export default {
     history,
     bgBar,
     importImg,
-    importSvg
+    importSvg,
+    align
   },
   created () {
     this.$Spin.show()
@@ -220,7 +220,7 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-#canvas{
+#canvas {
   width: 300px;
   height: 300px;
   margin: 0 auto;

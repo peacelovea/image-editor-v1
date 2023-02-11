@@ -1,5 +1,3 @@
-// 在mixins中定义了选择类型（多选、单选、未选中）、选中元素类型、选中id等属性，以及选中、取消选中的事件，子组件通过引入mixins来开发对应功能
-// 如子组件需要对fabric对象进行操作，则可以通过inject获得原始对象。
 export default {
   inject: ['canvas', 'fabric', 'event'],
   data () {
@@ -12,11 +10,68 @@ export default {
   },
   created () {
     this.event.on('selectOne', (e) => {
-      console.log(e, 'e')
-      this.mSelectOneType = 'one'
+      this.mSelectMode = 'one'
       this.mSelectId = e[0].id
       this.mSelectOneType = e[0].type
       this.mSelectIds = e.map(item => item.id)
     })
+
+    this.event.on('selectMultiple', (e) => {
+      this.mSelectMode = 'multiple'
+      this.mSelectId = ''
+      this.mSelectIds = e.map(item => item.id)
+    })
+
+    this.event.on('selectCancel', () => {
+      this.mSelectId = ''
+      this.mSelectIds = []
+      this.mSelectMode = ''
+      this.mSelectOneType = ''
+    })
+  },
+  methods: {
+    /**
+     * @description: 保存data数据
+     * @param {Object} data 房间详情数据
+     */
+    _mixinSelected ({
+      event,
+      selected
+    }) {
+      if (selected.length === 1) {
+        const selectItem = selected[0]
+        this.mSelectMode = 'one'
+        this.mSelectOneType = selectItem.type
+        this.mSelectId = [selectItem.id]
+        this.mSelectActive = [selectItem]
+      } else if (selected.length > 1) {
+        this.mSelectMode = 'multiple'
+        this.mSelectActive = selected
+        this.mSelectId = selected.map(item => item.id)
+      } else {
+        this._mixinCancel()
+      }
+    },
+    /**
+     * @description: 保存data数据
+     * @param {Object} data 房间详情数据
+     */
+    _mixinCancel (data) {
+      this.mSelectMode = ''
+      this.mSelectId = []
+      this.mSelectActive = []
+      this.mSelectOneType = ''
+    },
+    /**
+     * @description: 复制到剪切板
+     * @param {String} clipboardText 复制内容
+     */
+    _mixinClipboard (clipboardText) {
+      this.$copyText(clipboardText).then(() => {
+        this.$Message.success('复制成功')
+      }, () => {
+        this.$Message.error('复制失败')
+      })
+    },
   }
 }
