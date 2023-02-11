@@ -13,6 +13,8 @@
         <flip></flip>
         &nbsp;
         <center-align></center-align>
+        &nbsp;
+        <group></group>
 
       </Header>
       <Content style=" display: flex; height: calc(100vh - 64px);">
@@ -71,6 +73,7 @@ import importImg from '@/components/importImg.vue'
 import align from '@/components/align.vue'
 import centerAlign from '@/components/centerAlign.vue'
 import flip from '@/components/flip.vue'
+import group from '@/components/group.vue'
 
 // 左侧组件
 import importTmpl from '@/components/importTmpl.vue'
@@ -113,7 +116,8 @@ export default {
     importSvg,
     align,
     flip,
-    centerAlign
+    centerAlign,
+    group
   },
   created () {
     this.$Spin.show()
