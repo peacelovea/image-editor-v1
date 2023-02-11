@@ -123,7 +123,6 @@ export default {
     },
     // 设置背景图片
     setBgImg (target) {
-      console.log(target)
       const imgEl = target.cloneNode(true)
       imgEl.onload = () => {
         // 可跨域

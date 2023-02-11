@@ -17,6 +17,10 @@
         <group></group>
         &nbsp;
         <lock></lock>
+        &nbsp;
+        <dele></dele>
+        &nbsp;
+        <clone></clone>
       </Header>
       <Content style=" display: flex; height: calc(100vh - 64px);">
         <div v-if="show" style="width: 380px; height: 100%; background:#fff; display: flex">
@@ -70,12 +74,14 @@
 import importSvg from '@/components/importSvg.vue'
 import importImg from '@/components/importImg.vue'
 
-// // 顶部组件
+// 顶部组件
 import align from '@/components/align.vue'
 import centerAlign from '@/components/centerAlign.vue'
 import flip from '@/components/flip.vue'
 import group from '@/components/group.vue'
 import lock from '@/components/lock.vue'
+import dele from '@/components/del.vue'
+import clone from '@/components/clone.vue'
 
 // 左侧组件
 import importTmpl from '@/components/importTmpl.vue'
@@ -120,7 +126,9 @@ export default {
     flip,
     centerAlign,
     group,
-    lock
+    lock,
+    dele,
+    clone
   },
   created () {
     this.$Spin.show()

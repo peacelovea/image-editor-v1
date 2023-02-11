@@ -115,7 +115,6 @@ export default {
       const activeObject = this.canvas.c.getActiveObject()
       if (activeObject && activeObject.type === 'activeSelection') {
         const activeSelection = activeObject
-        console.log(activeSelection)
         const activeObjectTop = -(activeObject.height / 2)
         activeSelection.forEachObject(item => {
           item.set({
