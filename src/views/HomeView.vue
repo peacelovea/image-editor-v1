@@ -12,21 +12,8 @@
         &nbsp;
         <flip></flip>
         &nbsp;
-        <!--                <center-align></center-align>-->
-        <!--        &nbsp;-->
-        <!--        <group></group>-->
-        <!--        &nbsp;-->
-        <!--        <zoom></zoom>-->
-        <!--        &nbsp;-->
-        <!--        <lock></lock>-->
-        <!--        &nbsp;-->
-        <!--        <dele></dele>-->
-        <!--        &nbsp;-->
-        <!--        <clone></clone>-->
+        <center-align></center-align>
 
-        <!--        <div style="float:right">-->
-        <!--          <save></save>-->
-        <!--        </div>-->
       </Header>
       <Content style=" display: flex; height: calc(100vh - 64px);">
         <div v-if="show" style="width: 380px; height: 100%; background:#fff; display: flex">
@@ -68,12 +55,7 @@
             <canvas width="450" height="600" id="canvas"></canvas>
           </div>
         </div>
-        <!-- 属性区域 -->
-        <!--        <div style="width: 380px; height: 100%; padding:10px; overflow-y: auto; background:#fff">-->
-        <!--          <history v-if="show"></history>-->
-        <!--          <layer v-if="show"></layer>-->
-        <!--          <attribute v-if="show"></attribute>-->
-        <!--        </div>-->
+
       </Content>
     </Layout>
   </div>
@@ -82,33 +64,23 @@
 <script>
 
 // 导入元素
-// import importJSON from '@/components/importJSON.vue'
 import importSvg from '@/components/importSvg.vue'
 import importImg from '@/components/importImg.vue'
 
 // // 顶部组件
 import align from '@/components/align.vue'
-// import centerAlign from '@/components/centerAlign.vue'
+import centerAlign from '@/components/centerAlign.vue'
 import flip from '@/components/flip.vue'
-// import save from '@/components/save.vue'
-// import clone from '@/components/clone.vue'
-// import group from '@/components/group.vue'
-// import zoom from '@/components/zoom.vue'
-// import lock from '@/components/lock.vue'
-// import dele from '@/components/del.vue'
+
 // 左侧组件
 import importTmpl from '@/components/importTmpl.vue'
 import tools from '@/components/tools.vue'
 import svgEl from '@/components/svgEl.vue'
 import bgBar from '@/components/bgBar.vue'
 import setSize from '@/components/setSize.vue'
-//
-// // 右侧组件
-// import history from '@/components/history.vue'
-// import layer from '@/components/layer.vue'
-// import attribute from '@/components/attribute.vue'
-//
-// // 功能组件
+
+// 右侧组件
+// 功能组件
 import EventHandle from '@/utils/eventHandler'
 // import hotkeys from '@/plugin/hotkeys'
 import { fabric } from 'fabric'
@@ -140,7 +112,8 @@ export default {
     importImg,
     importSvg,
     align,
-    flip
+    flip,
+    centerAlign
   },
   created () {
     this.$Spin.show()
