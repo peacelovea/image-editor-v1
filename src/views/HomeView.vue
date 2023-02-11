@@ -15,7 +15,8 @@
         <center-align></center-align>
         &nbsp;
         <group></group>
-
+        &nbsp;
+        <lock></lock>
       </Header>
       <Content style=" display: flex; height: calc(100vh - 64px);">
         <div v-if="show" style="width: 380px; height: 100%; background:#fff; display: flex">
@@ -74,6 +75,7 @@ import align from '@/components/align.vue'
 import centerAlign from '@/components/centerAlign.vue'
 import flip from '@/components/flip.vue'
 import group from '@/components/group.vue'
+import lock from '@/components/lock.vue'
 
 // 左侧组件
 import importTmpl from '@/components/importTmpl.vue'
@@ -117,7 +119,8 @@ export default {
     align,
     flip,
     centerAlign,
-    group
+    group,
+    lock
   },
   created () {
     this.$Spin.show()
