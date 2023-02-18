@@ -6,7 +6,7 @@
 import select from '@/mixins/select'
 
 export default {
-  name: 'del',
+  name: 'dele',
   mixins: [select],
   data () {
     return {}

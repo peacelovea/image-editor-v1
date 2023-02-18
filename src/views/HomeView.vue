@@ -67,7 +67,10 @@
             <canvas width="450" height="600" id="canvas"></canvas>
           </div>
         </div>
-
+        <!--右侧属性区域-->
+        <div style="width: 380px; height: 100%; padding:10px; overflow-y: auto; background:#fff">
+          <history v-if="show"></history>
+        </div>
       </Content>
     </Layout>
   </div>
@@ -98,6 +101,8 @@ import bgBar from '@/components/bgBar.vue'
 import setSize from '@/components/setSize.vue'
 
 // 右侧组件
+import history from '@/components/history.vue'
+
 // 功能组件
 import EventHandle from '@/utils/eventHandler'
 // import hotkeys from '@/plugin/hotkeys'
@@ -125,7 +130,6 @@ export default {
     tools,
     importTmpl,
     svgEl,
-    history,
     bgBar,
     importImg,
     importSvg,
@@ -137,7 +141,8 @@ export default {
     dele,
     clone,
     zoom,
-    save
+    save,
+    history
   },
   created () {
     this.$Spin.show()
