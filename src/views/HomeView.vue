@@ -23,6 +23,9 @@
         <clone></clone>
         &nbsp;
         <zoom></zoom>
+        <div style="float:right">
+          <save></save>
+        </div>
       </Header>
       <Content style=" display: flex; height: calc(100vh - 64px);">
         <div v-if="show" style="width: 380px; height: 100%; background:#fff; display: flex">
@@ -85,6 +88,7 @@ import lock from '@/components/lock.vue'
 import dele from '@/components/del.vue'
 import clone from '@/components/clone.vue'
 import zoom from '@/components/zoom.vue'
+import save from '@/components/save.vue'
 
 // 左侧组件
 import importTmpl from '@/components/importTmpl.vue'
@@ -132,7 +136,8 @@ export default {
     lock,
     dele,
     clone,
-    zoom
+    zoom,
+    save
   },
   created () {
     this.$Spin.show()
