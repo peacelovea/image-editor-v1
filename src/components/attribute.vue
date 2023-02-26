@@ -213,6 +213,18 @@
         </FormItem>
       </Form>
     </div>
+    <!-- 图片属性 -->
+    <div v-show="imgType.includes(mSelectOneType)">
+      <Divider orientation="left" plain>图片滤镜</Divider>
+      <span>模糊：</span>
+      <Slider
+        v-model="imgAttr.blur"
+        :max="1"
+        :min="0"
+        :step="0.1"
+        @on-input="imgBlur"
+      ></Slider>
+    </div>
   </div>
 </template>
 
