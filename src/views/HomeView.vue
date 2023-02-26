@@ -71,6 +71,7 @@
         <div style="width: 380px; height: 100%; padding:10px; overflow-y: auto; background:#fff">
           <history v-if="show"></history>
           <layer v-if="show"></layer>
+          <attribute v-if="show"></attribute>
         </div>
       </Content>
     </Layout>
@@ -104,6 +105,7 @@ import setSize from '@/components/setSize.vue'
 // 右侧组件
 import history from '@/components/history.vue'
 import layer from '@/components/layer.vue'
+import attribute from '@/components/attribute.vue'
 // 功能组件
 import EventHandle from '@/utils/eventHandler'
 // import hotkeys from '@/plugin/hotkeys'
@@ -144,7 +146,8 @@ export default {
     zoom,
     save,
     history,
-    layer
+    layer,
+    attribute
   },
   created () {
     this.$Spin.show()
