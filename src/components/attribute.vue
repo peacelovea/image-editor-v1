@@ -92,6 +92,7 @@
             :step="0.1"
             show-input
             @on-change="(value) => changeCommon('lineHeight', value)"
+            size="small"
           ></InputNumber>
         </FormItem>
 
@@ -100,6 +101,114 @@
             v-model="fontAttr.charSpacing"
             show-input
             @on-change="(value) => changeCommon('charSpacing', value)"
+            size="small"
+          ></InputNumber>
+        </FormItem>
+      </Form>
+    </div>
+    <!-- 通用属性 -->
+    <div v-show="baseType.includes(mSelectOneType)">
+      <Divider orientation="left" plain>外观</Divider>
+      <Form :label-width="40" label-position="left">
+        <FormItem label="颜色">
+          <ColorPicker
+            v-model="baseAttr.fill"
+            alpha
+            size="small"
+            transfer
+            @on-change="(value) => changeCommon('fill', value)"
+          />
+        </FormItem>
+        <FormItem label="旋转">
+          <InputNumber
+            v-model="baseAttr.angle"
+            :max="360"
+            show-input
+            size="small"
+            @on-change="(value) => changeCommon('angle', value)"
+          ></InputNumber>
+        </FormItem>
+        <FormItem label="X轴">
+          <InputNumber
+            v-model="baseAttr.left"
+            :max="360"
+            show-input
+            size="small"
+            @on-change="(value) => changeCommon('left', value)"
+          ></InputNumber>
+        </FormItem>
+        <FormItem label="Y轴">
+          <InputNumber
+            v-model="baseAttr.top"
+            :max="360"
+            show-input
+            size="small"
+            @on-change="(value) => changeCommon('top', value)"
+          ></InputNumber>
+        </FormItem>
+        <FormItem label="透明">
+          <Slider
+            v-model="baseAttr.opacity"
+            size="small"
+            @on-change="(value) => changeCommon('opacity', value)"
+          ></Slider>
+        </FormItem>
+      </Form>
+      <Divider orientation="left" plain>描边</Divider>
+      <Form :label-width="40" label-position="left">
+        <FormItem label="宽度">
+          <InputNumber
+            v-model="baseAttr.strokeWidth"
+            :max="360"
+            show-input
+            size="small"
+            @on-change="(value) => changeCommon('strokeWidth', value)"
+          ></InputNumber>
+        </FormItem>
+        <FormItem label="颜色">
+          <ColorPicker
+            v-model="baseAttr.stroke"
+            alpha
+            size="small"
+            transfer
+            @on-change="(value) => changeCommon('stroke', value)"
+          />
+        </FormItem>
+      </Form>
+
+      <Divider orientation="left" plain>阴影</Divider>
+      <Form :label-width="40" label-position="left">
+        <FormItem label="颜色">
+          <ColorPicker
+            v-model="baseAttr.shadow.color"
+            alpha
+            size="small"
+            transfer
+            @on-change="(value) => changeShadow('color', value)"
+          />
+        </FormItem>
+        <FormItem label="模糊">
+          <InputNumber
+            v-model="baseAttr.shadow.blur"
+            :max="360"
+            size="small"
+            @on-change="(value) => changeShadow('blur', value)"
+          ></InputNumber>
+        </FormItem>
+        <FormItem label="X轴">
+          <InputNumber
+            v-model="baseAttr.shadow.offsetX"
+            :max="360"
+            size="small"
+            @on-change="(value) => changeShadow('offsetX', value)"
+          ></InputNumber>
+        </FormItem>
+        <FormItem label="Y轴">
+          <InputNumber
+            v-model="baseAttr.shadow.offsetY"
+            :max="360"
+            size="small"
+            @on-change="(value) => changeShadow('offsetY', value)"
           ></InputNumber>
         </FormItem>
       </Form>
@@ -239,7 +348,6 @@ export default {
     // 通用属性改变
     changeCommon (key, value) {
       const activeObject = this.canvas.c.getActiveObjects()[0]
-      console.log(activeObject, 'activeObject')
       // 透明度特殊转换
       if (key === 'opacity') {
         activeObject && activeObject.set(key, value / 100)
