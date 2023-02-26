@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkimage_editor_v1"]=self["webpackChunkimage_editor_v1"]||[]).push([[443],{1168:function(t,e,n){n.r(e),n.d(e,{default:function(){return l}});var u=function(){var t=this;t._self._c;return t._m(0)},i=[function(){var t=this,e=t._self._c;return e("div",{staticClass:"about"},[e("h1",[t._v("This is an about page")])])}],s=n(1001),a={},r=(0,s.Z)(a,u,i,!1,null,null,null),l=r.exports}}]);
+//# sourceMappingURL=about.9d8dd577.js.map
